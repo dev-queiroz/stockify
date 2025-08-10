@@ -1,0 +1,71 @@
+.idea
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# TypeScript
+*.tsbuildinfo
+dist/
+build/
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Backend (NestJS)
+stockify-backend/dist/
+stockify-backend/coverage/
+stockify-backend/.nestjs/
+stockify-backend/prisma/dev.db
+stockify-backend/prisma/dev.db-journal
+stockify-backend/prisma/migrations/
+
+# Frontend (React with Vite)
+stockify-frontend/dist/
+stockify-frontend/.vite/
+stockify-frontend/public/apk/*.apk  # Ignore any temporary APKs, keep final one manually
+stockify-frontend/.cache/
+
+# Mobile (React Native with Expo)
+stockify-mobile/.expo/
+stockify-mobile/dist/
+stockify-mobile/android/
+stockify-mobile/ios/
+stockify-mobile/build/
+*.apk
+*.aab
+*.ipa
+
+# Docker
+*.dockerignore
+Dockerfile.dev
+*.log
+
+# Editor and OS files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+*.lcov
+
+# CI/CD
+.github/workflows/*.cache
+
+# Miscellaneous
+*.swp
+*.swo
+*.tmp
+temp/
+tmp/
