@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15  # Use :15 for consistency (instead of :latest)
+    restart: always
+    environment:
+      POSTGRES_USER: stockify_user
+      POSTGRES_PASSWORD: stockify_pass
+      POSTGRES_DB: stockify_db
+    ports:
+      - '5433:5432'  # Change to 5433:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U stockify_user -d stockify_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./stockify-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://stockify_user:stockify_pass@postgres:5432/stockify_db?schema=public
+      - JWT_SECRET=X7j9kPq2mW8vL3nR5tY6uZ1xQ4cB2aF9gH8jK
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./stockify-backend:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
