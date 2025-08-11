@@ -2,7 +2,7 @@ name: Deploy Backend to Render
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
     paths:
       - 'stockify-backend/**'
 
